@@ -10,7 +10,7 @@ namespace Roulette
     class RouletteWheel
     {
         private string[,] wheel;
-        
+        private Random random;
         public RouletteWheel()
         {
             wheel = new string[,]
@@ -56,12 +56,8 @@ namespace Roulette
 
         public string SpinWheel()
         {
-            Random random = new Random();
+            
 
-            for (int i = 0; i <wheel.Length; i++)
-            {   
-                
-            }   
         }
    
 
