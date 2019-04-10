@@ -11,10 +11,23 @@ namespace Roulette
     {
         static void Main(string[] args)
         {
+            bool Run = true;
+            
             RouletteWheel wheel = new RouletteWheel();
             
-            wheel.SpinWheel();
+            
+            while (Run)
+            {
+                Console.Clear();
+                Console.WriteLine("ESC to quit, any other key to keep gambling\n");
+                wheel.SpinWheel();
 
+                if (Console.ReadKey(true).Key == ConsoleKey.Escape)
+                {
+                    Run = false;
+                }
+            }
+           
         }
     }
 }

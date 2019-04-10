@@ -13,10 +13,13 @@ namespace Roulette
         private Random random;
         private string winningNumber;
         private string winningColor;
+        private string winningBin;
+
+
         public RouletteWheel()
         {
             wheel = new string[,]
-            {{"0","Green"},
+            {{"0", "Green"},
              {"00", "Green"},
              {"1", "Red"},
              {"2", "Black"},
@@ -59,16 +62,37 @@ namespace Roulette
 
         public void SpinWheel()
         {
-            // I think I need 39 rather than 38 because of the definition of Next
-            int randIndex = random.Next(39);
-
+            
+            int randIndex = random.Next(38);
+            
             winningNumber = wheel[randIndex, 0];
             winningColor = wheel[randIndex, 1];
-            
-            Console.WriteLine($"{winningNumber} {winningColor}");
+            winningBin = winningNumber + " " + winningColor;
+            Console.WriteLine($"Winner, {winningBin}!");
+            Console.WriteLine();
 
 
+            // Index evens and odds are backwards, so EVENS swap with ODDS!
+            switch (randIndex)
+            {
+                case 0:
+                    Console.WriteLine("Number bet: 0 Green is the winner!");
+                    break;
+                case 1:
+                    Console.WriteLine("Number bet: 00 Green is the winner!");
+                    break;
+                case var s when randIndex % 2 == 0:
+                    Console.WriteLine("Odds: Winner!");
+                    break;
+                case var s when randIndex % 2 != 0:
+                    Console.WriteLine("Evens: Winner!");
+                    break;
+           
+           
+     
+            }
 
+          
 
 
         }
