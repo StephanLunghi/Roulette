@@ -59,27 +59,18 @@ namespace Roulette
 
         public void SpinWheel()
         {
-            int randIndex = random.Next(38);
+            // I think I need 39 rather than 38 because of the definition of Next
+            int randIndex = random.Next(39);
 
             winningNumber = wheel[randIndex, 0];
             winningColor = wheel[randIndex, 1];
             
-            
             Console.WriteLine($"{winningNumber} {winningColor}");
 
-            //for (int i = 0; i < wheel.GetLength(0); i++)
-            //{
-            //    for (int j = 0; j < wheel.GetLength(1); j++)
-            //    {
 
-            //    }
-            //}
+
+
+
         }
-   
-
-        
-
-
-
     }
 }
