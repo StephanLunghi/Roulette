@@ -11,6 +11,8 @@ namespace Roulette
     {
         private string[,] wheel;
         private Random random;
+        private string winningNumber;
+        private string winningColor;
         public RouletteWheel()
         {
             wheel = new string[,]
@@ -52,12 +54,26 @@ namespace Roulette
              {"34","Red"},
              {"35","Black"},
              {"36","Red"} };
+            random = new Random();
         }
 
-        public string SpinWheel()
+        public void SpinWheel()
         {
-            
+            int randIndex = random.Next(38);
 
+            winningNumber = wheel[randIndex, 0];
+            winningColor = wheel[randIndex, 1];
+            
+            
+            Console.WriteLine($"{winningNumber} {winningColor}");
+
+            //for (int i = 0; i < wheel.GetLength(0); i++)
+            //{
+            //    for (int j = 0; j < wheel.GetLength(1); j++)
+            //    {
+
+            //    }
+            //}
         }
    
 

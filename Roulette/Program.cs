@@ -12,8 +12,8 @@ namespace Roulette
         static void Main(string[] args)
         {
             RouletteWheel wheel = new RouletteWheel();
-
             
+            wheel.SpinWheel();
 
         }
     }
