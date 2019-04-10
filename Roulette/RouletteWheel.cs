@@ -71,28 +71,51 @@ namespace Roulette
             Console.WriteLine($"Winner, {winningBin}!");
             Console.WriteLine();
 
-
             // Index evens and odds are backwards, so EVENS swap with ODDS!
-            switch (randIndex)
+            if (randIndex < 2 && randIndex == 0)
             {
-                case 0:
-                    Console.WriteLine("Number bet: 0 Green is the winner!");
-                    break;
-                case 1:
-                    Console.WriteLine("Number bet: 00 Green is the winner!");
-                    break;
-                case var s when randIndex % 2 == 0:
-                    Console.WriteLine("Odds: Winner!");
-                    break;
-                case var s when randIndex % 2 != 0:
-                    Console.WriteLine("Evens: Winner!");
-                    break;
-           
-           
-     
+                Console.WriteLine("Number bet: 0 Green is the winner!");
             }
+            else if (randIndex < 2 && randIndex == 1)
+            {
+                Console.WriteLine("Number bet: 00 Green is the winner!");
+            }
+            else
+            {
+                if (randIndex % 2 == 0)
+                {
+                    Console.WriteLine("Odds: Winner!");        
+                }
+                else
+                { 
+                    Console.WriteLine("Evens: Winner!");
+                }
 
-          
+                if (randIndex < 20)
+                {
+                    Console.WriteLine("Lows: Winner!");
+                }
+                else
+                {
+                    Console.WriteLine("Highs: Winner!");
+                }
+
+                if (randIndex < 14)
+                {
+                    Console.WriteLine("Dozens 1-12: Winner!");
+                }
+                else if (randIndex < 26)
+                {
+                    Console.WriteLine("Dozens 13-24: Winner!");
+                }
+                else
+                {
+                    Console.WriteLine("Dozens 25-36: Winner!");
+                }
+
+
+            }
+           
 
 
         }
