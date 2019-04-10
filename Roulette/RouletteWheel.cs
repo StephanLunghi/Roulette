@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -20,7 +21,6 @@ namespace Roulette
         {
             wheel = new string[,]
             {{"0", "Green"},
-             {"00", "Green"},
              {"1", "Red"},
              {"2", "Black"},
              {"3","Red"}, 
@@ -56,7 +56,9 @@ namespace Roulette
              {"33","Black"},
              {"34","Red"},
              {"35","Black"},
-             {"36","Red"} };
+             {"36","Red"} ,
+            { "00", "Green"}};
+            
             random = new Random();
         }
 
@@ -72,11 +74,11 @@ namespace Roulette
             Console.WriteLine();
 
             // Index evens and odds are backwards, so EVENS swap with ODDS!
-            if (randIndex < 2 && randIndex == 0)
+            if (randIndex < 1 && randIndex == 0)
             {
                 Console.WriteLine("Number bet: 0 Green is the winner!");
             }
-            else if (randIndex < 2 && randIndex == 1)
+            else if (randIndex > 36 && randIndex == 37)
             {
                 Console.WriteLine("Number bet: 00 Green is the winner!");
             }
@@ -84,14 +86,14 @@ namespace Roulette
             {
                 if (randIndex % 2 == 0)
                 {
-                    Console.WriteLine("Odds: Winner!");        
+                    Console.WriteLine("Evens: Winner!");        
                 }
                 else
                 { 
-                    Console.WriteLine("Evens: Winner!");
+                    Console.WriteLine("Odds: Winner!");
                 }
 
-                if (randIndex < 20)
+                if (randIndex < 19)
                 {
                     Console.WriteLine("Lows: Winner!");
                 }
@@ -100,11 +102,11 @@ namespace Roulette
                     Console.WriteLine("Highs: Winner!");
                 }
 
-                if (randIndex < 14)
+                if (randIndex < 13)
                 {
                     Console.WriteLine("Dozens 1-12: Winner!");
                 }
-                else if (randIndex < 26)
+                else if (randIndex < 25)
                 {
                     Console.WriteLine("Dozens 13-24: Winner!");
                 }
@@ -113,6 +115,19 @@ namespace Roulette
                     Console.WriteLine("Dozens 25-36: Winner!");
                 }
 
+                if ( randIndex % 3 == 0)
+                {
+                    Console.WriteLine("Third Column: Winner!");
+                }
+                else if (randIndex % 3 == 1)
+                {
+                    Console.WriteLine("Second Column: Winner!");
+                }
+                else
+                {
+                    Console.WriteLine("First Column: Winner!");
+                }
+             
 
             }
            
