@@ -121,11 +121,11 @@ namespace Roulette
                 }
                 else if (randIndex % 3 == 1)
                 {
-                    Console.WriteLine("Second Column: Winner!");
+                    Console.WriteLine("First Column: Winner!");
                 }
                 else
                 {
-                    Console.WriteLine("First Column: Winner!");
+                    Console.WriteLine("Second Column: Winner!");
                 }
              
 
