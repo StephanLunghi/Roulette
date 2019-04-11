@@ -127,8 +127,19 @@ namespace Roulette
                 {
                     Console.WriteLine("Second Column: Winner!");
                 }
-             
 
+                if (randIndex % 3 == 0)
+                {
+                    Console.WriteLine($"Row {randIndex - 2},{randIndex - 1},{randIndex}: Winner!");
+                }
+                else if (randIndex % 3 == 1)
+                {
+                    Console.WriteLine($"Row {randIndex},{randIndex + 1},{randIndex + 2}: Winner!");
+                }
+                else
+                {
+                    Console.WriteLine($"Row {randIndex - 1},{randIndex},{randIndex + 1}: Winner!");
+                }
             }
            
 
