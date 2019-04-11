@@ -59,12 +59,12 @@ namespace Roulette
              {"36","Red"} ,
             { "00", "Green"}};
             
-            random = new Random();
+           random = new Random();
         }
 
         public void SpinWheel()
         {
-            
+
             int randIndex = random.Next(38);
             
             winningNumber = wheel[randIndex, 0];
@@ -84,66 +84,105 @@ namespace Roulette
             }
             else
             {
-                if (randIndex % 2 == 0)
+                EvensOdds(randIndex);
+
+                HighsLows(randIndex);
+
+                Dozens(randIndex);
+
+                Columns(randIndex);
+
+                Streets(randIndex);
+                // Need to figure out double rows
+                // Working on Splits
+                if (randIndex % 3 == 1 && randIndex != 1 && randIndex != 34)
                 {
-                    Console.WriteLine("Evens: Winner!");        
+                    Console.WriteLine($"Split Winners: {randIndex - 3 }/{randIndex}, {randIndex}/{randIndex + 1}, {randIndex}/{randIndex + 3} ");
+
                 }
-                else
-                { 
-                    Console.WriteLine("Odds: Winner!");
+                if (randIndex == 1)
+                {
+                    Console.WriteLine($"Split Winners: {randIndex + 1},{randIndex + 3} ");
                 }
 
-                if (randIndex < 19)
-                {
-                    Console.WriteLine("Lows: Winner!");
-                }
-                else
-                {
-                    Console.WriteLine("Highs: Winner!");
-                }
 
-                if (randIndex < 13)
-                {
-                    Console.WriteLine("Dozens 1-12: Winner!");
-                }
-                else if (randIndex < 25)
-                {
-                    Console.WriteLine("Dozens 13-24: Winner!");
-                }
-                else
-                {
-                    Console.WriteLine("Dozens 25-36: Winner!");
-                }
 
-                if ( randIndex % 3 == 0)
-                {
-                    Console.WriteLine("Third Column: Winner!");
-                }
-                else if (randIndex % 3 == 1)
-                {
-                    Console.WriteLine("First Column: Winner!");
-                }
-                else
-                {
-                    Console.WriteLine("Second Column: Winner!");
-                }
-
-                if (randIndex % 3 == 0)
-                {
-                    Console.WriteLine($"Row {randIndex - 2},{randIndex - 1},{randIndex}: Winner!");
-                }
-                else if (randIndex % 3 == 1)
-                {
-                    Console.WriteLine($"Row {randIndex},{randIndex + 1},{randIndex + 2}: Winner!");
-                }
-                else
-                {
-                    Console.WriteLine($"Row {randIndex - 1},{randIndex},{randIndex + 1}: Winner!");
-                }
             }
-           
 
 
+
+        }
+
+        private static void Streets(int randIndex)
+        {
+            if (randIndex % 3 == 0)
+            {
+                Console.WriteLine($"Street Winners: {randIndex - 2},{randIndex - 1},{randIndex}");
+            }
+            else if (randIndex % 3 == 1)
+            {
+                Console.WriteLine($"Street Winners: {randIndex},{randIndex + 1},{randIndex + 2}");
+            }
+            else
+            {
+                Console.WriteLine($"Street Winners: {randIndex - 1},{randIndex},{randIndex + 1}");
+            }
+        }
+
+        private static void Columns(int randIndex)
+        {
+            if (randIndex % 3 == 0)
+            {
+                Console.WriteLine("Third Column: Winner!");
+            }
+            else if (randIndex % 3 == 1)
+            {
+                Console.WriteLine("First Column: Winner!");
+            }
+            else
+            {
+                Console.WriteLine("Second Column: Winner!");
+            }
+        }
+
+        private static void Dozens(int randIndex)
+        {
+            if (randIndex < 13)
+            {
+                Console.WriteLine("Dozens 1-12: Winner!");
+            }
+            else if (randIndex < 25)
+            {
+                Console.WriteLine("Dozens 13-24: Winner!");
+            }
+            else
+            {
+                Console.WriteLine("Dozens 25-36: Winner!");
+            }
+        }
+
+        private static void HighsLows(int randIndex)
+        {
+            if (randIndex < 19)
+            {
+                Console.WriteLine("Lows: Winner!");
+            }
+            else
+            {
+                Console.WriteLine("Highs: Winner!");
+            }
+        }
+
+        private void EvensOdds(int randIndex)
+        {
+            if (randIndex % 2 == 0)
+            {
+                Console.WriteLine("Evens: Winner!");
+            }
+            else
+            {
+                Console.WriteLine("Odds: Winner!");
+            }
         }
     }
 }
