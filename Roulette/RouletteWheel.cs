@@ -64,7 +64,6 @@ namespace Roulette
 
         public void SpinWheel()
         {
-
             int randIndex = random.Next(38);
             
             winningNumber = wheel[randIndex, 0];
@@ -73,7 +72,6 @@ namespace Roulette
             Console.WriteLine($"Winner, {winningBin}!");
             Console.WriteLine();
 
-            // Index evens and odds are backwards, so EVENS swap with ODDS!
             if (randIndex < 1 && randIndex == 0)
             {
                 Console.WriteLine("Number bet: 0 Green is the winner!");
@@ -85,32 +83,77 @@ namespace Roulette
             else
             {
                 EvensOdds(randIndex);
-
                 HighsLows(randIndex);
-
                 Dozens(randIndex);
-
                 Columns(randIndex);
-
                 Streets(randIndex);
-                // Need to figure out double rows
-                // Working on Splits
-                if (randIndex % 3 == 1 && randIndex != 1 && randIndex != 34)
-                {
-                    Console.WriteLine($"Split Winners: {randIndex - 3 }/{randIndex}, {randIndex}/{randIndex + 1}, {randIndex}/{randIndex + 3} ");
+                Doubles(randIndex);
+                Splits(randIndex);
+            }
+        }
+        private static void Doubles(int randIndex)
+        {
+            if (randIndex % 3 == 0 && randIndex != 36)
+            {
+                Console.WriteLine($"Double Row Winners: {randIndex - 2},{randIndex - 1},{randIndex},{randIndex + 1},{randIndex + 2},{randIndex + 3}");
+            }
+            if (randIndex % 3 == 1 && randIndex != 34)
+            {
+                Console.WriteLine($"Double Row Winners: {randIndex},{randIndex + 1},{randIndex + 2},{randIndex + 3},{randIndex + 4},{randIndex + 5}");
+            }
+            if (randIndex % 3 == 2 && randIndex != 35)
+            {
+                Console.WriteLine($"Double Row Winners: {randIndex - 1},{randIndex},{randIndex + 1},{randIndex + 2},{randIndex + 3},{randIndex + 4}");
+            }
+            if (randIndex == 35)
+            {
+                Console.WriteLine($"Double Row Winners: {randIndex - 4},{randIndex - 3},{randIndex - 2},{randIndex - 1},{randIndex},{randIndex + 1}");
+            }
+        }
 
-                }
-                if (randIndex == 1)
-                {
-                    Console.WriteLine($"Split Winners: {randIndex + 1},{randIndex + 3} ");
-                }
-
-
+        private static void Splits(int randIndex)
+        {
+            if (randIndex % 3 == 1 && randIndex != 1 && randIndex != 34)
+            {
+                Console.WriteLine($"Split Winners: {randIndex - 3 }/{randIndex}, {randIndex}/{randIndex + 1}, {randIndex}/{randIndex + 3} ");
 
             }
+            if (randIndex == 1)
+            {
+                Console.WriteLine($"Split Winners: {randIndex}/{randIndex + 1}, {randIndex}/{randIndex + 3} ");
+            }
 
+            if (randIndex == 34)
+            {
+                Console.WriteLine($"Double Row Winners: {randIndex - 3},{randIndex - 2},{randIndex - 1},{randIndex},{randIndex + 1},{randIndex + 2}");
+                Console.WriteLine($"Split Winners: {randIndex - 3}/{randIndex}, {randIndex}/{randIndex + 1} ");
 
+            }
+            if (randIndex % 3 == 2 && randIndex != 2 && randIndex != 35)
+            {
+                Console.WriteLine($"Split Winners: {randIndex - 3 }/{randIndex}, {randIndex - 1}/{randIndex}, {randIndex}/{randIndex + 1}, {randIndex}/{randIndex + 3} ");
+            }
 
+            if (randIndex == 2 || randIndex == 35)
+            {
+                Console.WriteLine($"Split Winners: {randIndex - 1}/{randIndex}, {randIndex}/{randIndex + 1} ");
+            }
+
+            if (randIndex == 3)
+            {
+                Console.WriteLine($"Split Winners: {randIndex - 1}/{randIndex}, {randIndex}/{randIndex + 3} ");
+            }
+
+            if (randIndex == 36)
+            {
+                Console.WriteLine($"Double Row Winners: {randIndex - 5},{randIndex - 4},{randIndex - 3},{randIndex - 2},{randIndex - 1},{randIndex}");
+                Console.WriteLine($"Split Winners: {randIndex - 3}/{randIndex}, {randIndex - 1}/{randIndex} ");
+            }
+
+            if (randIndex % 3 == 0 && randIndex != 3 || randIndex != 36)
+            {
+                Console.WriteLine($"Split Winners: {randIndex - 3}/{randIndex}, {randIndex - 1}/{randIndex}, {randIndex}/{randIndex + 3} ");
+            }
         }
 
         private static void Streets(int randIndex)
