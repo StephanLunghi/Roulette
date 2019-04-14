@@ -89,8 +89,11 @@ namespace Roulette
                 Streets(randIndex);
                 Doubles(randIndex);
                 Splits(randIndex);
+
+               
             }
         }
+
         private static void Doubles(int randIndex)
         {
             if (randIndex % 3 == 0 && randIndex != 36)
@@ -150,7 +153,7 @@ namespace Roulette
                 Console.WriteLine($"Split Winners: {randIndex - 3}/{randIndex}, {randIndex - 1}/{randIndex} ");
             }
 
-            if (randIndex % 3 == 0 && randIndex != 3 || randIndex != 36)
+            if (randIndex % 3 == 0 && randIndex != 3 && randIndex != 36)
             {
                 Console.WriteLine($"Split Winners: {randIndex - 3}/{randIndex}, {randIndex - 1}/{randIndex}, {randIndex}/{randIndex + 3} ");
             }
