@@ -16,7 +16,6 @@ namespace Roulette
         private string winningColor;
         private string winningBin;
 
-
         public RouletteWheel()
         {
             wheel = new string[,]
@@ -72,11 +71,11 @@ namespace Roulette
             Console.WriteLine($"Winner, {winningBin}!");
             Console.WriteLine();
 
-            if (randIndex < 1 && randIndex == 0)
+            if (randIndex == 0)
             {
                 Console.WriteLine("Number bet: 0 Green is the winner!");
             }
-            else if (randIndex > 36 && randIndex == 37)
+            else if (randIndex == 37)
             {
                 Console.WriteLine("Number bet: 00 Green is the winner!");
             }
@@ -89,12 +88,10 @@ namespace Roulette
                 Streets(randIndex);
                 Doubles(randIndex);
                 Splits(randIndex);
-
-               
             }
         }
 
-        private static void Doubles(int randIndex)
+        private void Doubles(int randIndex)
         {
             if (randIndex % 3 == 0 && randIndex != 36)
             {
@@ -114,7 +111,7 @@ namespace Roulette
             }
         }
 
-        private static void Splits(int randIndex)
+        private void Splits(int randIndex)
         {
             if (randIndex % 3 == 1 && randIndex != 1 && randIndex != 34)
             {
@@ -159,7 +156,7 @@ namespace Roulette
             }
         }
 
-        private static void Streets(int randIndex)
+        private void Streets(int randIndex)
         {
             if (randIndex % 3 == 0)
             {
@@ -175,7 +172,7 @@ namespace Roulette
             }
         }
 
-        private static void Columns(int randIndex)
+        private void Columns(int randIndex)
         {
             if (randIndex % 3 == 0)
             {
@@ -191,7 +188,7 @@ namespace Roulette
             }
         }
 
-        private static void Dozens(int randIndex)
+        private void Dozens(int randIndex)
         {
             if (randIndex < 13)
             {
@@ -207,7 +204,7 @@ namespace Roulette
             }
         }
 
-        private static void HighsLows(int randIndex)
+        private void HighsLows(int randIndex)
         {
             if (randIndex < 19)
             {

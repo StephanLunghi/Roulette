@@ -14,8 +14,7 @@ namespace Roulette
             bool Run = true;
             
             RouletteWheel wheel = new RouletteWheel();
-            
-            
+
             while (Run)
             {
                 Console.Clear();
