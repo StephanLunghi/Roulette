@@ -84,10 +84,10 @@ namespace Roulette
                 EvensOdds(randIndex);
                 HighsLows(randIndex);
                 Dozens(randIndex);
-                Columns(randIndex);
-                Streets(randIndex);
+                ColumnStreets(randIndex);
                 Doubles(randIndex);
-                Splits(randIndex);
+                SplitsCorners(randIndex);
+
             }
         }
 
@@ -111,80 +111,80 @@ namespace Roulette
             }
         }
 
-        private void Splits(int randIndex)
+        private void SplitsCorners(int randIndex)
         {
             if (randIndex % 3 == 1 && randIndex != 1 && randIndex != 34)
             {
+                
                 Console.WriteLine($"Split Winners: {randIndex - 3 }/{randIndex}, {randIndex}/{randIndex + 1}, {randIndex}/{randIndex + 3} ");
-
+                Console.WriteLine($"Corner Winners: {randIndex - 3}/{randIndex - 2}/{randIndex}/{randIndex + 1}, {randIndex}/{randIndex + 1}/{randIndex + 3}/{randIndex + 4}");
             }
             if (randIndex == 1)
             {
                 Console.WriteLine($"Split Winners: {randIndex}/{randIndex + 1}, {randIndex}/{randIndex + 3} ");
+                Console.WriteLine($"Corner Winners: {randIndex}/{randIndex + 1}/{randIndex + 3}/{randIndex + 4}");
             }
 
             if (randIndex == 34)
             {
                 Console.WriteLine($"Double Row Winners: {randIndex - 3},{randIndex - 2},{randIndex - 1},{randIndex},{randIndex + 1},{randIndex + 2}");
                 Console.WriteLine($"Split Winners: {randIndex - 3}/{randIndex}, {randIndex}/{randIndex + 1} ");
-
+                Console.WriteLine($"Corner Winners: {randIndex -3}/{randIndex - 2}/{randIndex}/{randIndex + 1}");
             }
             if (randIndex % 3 == 2 && randIndex != 2 && randIndex != 35)
             {
                 Console.WriteLine($"Split Winners: {randIndex - 3 }/{randIndex}, {randIndex - 1}/{randIndex}, {randIndex}/{randIndex + 1}, {randIndex}/{randIndex + 3} ");
+                Console.WriteLine($"Corner Winners: {randIndex - 4}/{randIndex - 3}/{randIndex - 1}/{randIndex}, {randIndex - 3}/{randIndex - 2}/{randIndex}/{randIndex + 1}, {randIndex - 1}/{randIndex}/{randIndex + 2}/{randIndex + 3}, {randIndex}/{randIndex + 1}/{randIndex + 3}/{randIndex + 4}");
             }
 
-            if (randIndex == 2 || randIndex == 35)
+            if (randIndex == 2)
             {
                 Console.WriteLine($"Split Winners: {randIndex - 1}/{randIndex}, {randIndex}/{randIndex + 1} ");
+                Console.WriteLine($"Corner Winners: {randIndex - 1}/{randIndex}/{randIndex + 2}/{randIndex + 3}, {randIndex}/{randIndex + 1}/{randIndex + 3}/{randIndex + 4}");
+            }
+
+            if (randIndex == 35)
+            {
+                Console.WriteLine($"Split Winners: {randIndex - 1}/{randIndex}, {randIndex}/{randIndex + 1} ");
+                Console.WriteLine($"Corner Winners: {randIndex - 4}/{randIndex - 3}/{randIndex - 1}/{randIndex}, {randIndex - 3}/{randIndex - 2}/{randIndex}/{randIndex + 1}");
             }
 
             if (randIndex == 3)
             {
                 Console.WriteLine($"Split Winners: {randIndex - 1}/{randIndex}, {randIndex}/{randIndex + 3} ");
+                Console.WriteLine($"Corner Winners: {randIndex - 1}/{randIndex}/{randIndex + 2}/{randIndex + 3}");
             }
 
             if (randIndex == 36)
             {
                 Console.WriteLine($"Double Row Winners: {randIndex - 5},{randIndex - 4},{randIndex - 3},{randIndex - 2},{randIndex - 1},{randIndex}");
                 Console.WriteLine($"Split Winners: {randIndex - 3}/{randIndex}, {randIndex - 1}/{randIndex} ");
+                Console.WriteLine($"Corner Winners: {randIndex - 4}/{randIndex - 3}/{randIndex - 1}/{randIndex}");
             }
 
             if (randIndex % 3 == 0 && randIndex != 3 && randIndex != 36)
             {
                 Console.WriteLine($"Split Winners: {randIndex - 3}/{randIndex}, {randIndex - 1}/{randIndex}, {randIndex}/{randIndex + 3} ");
+                Console.WriteLine($"Corner Winners: {randIndex - 4}/{randIndex - 3}/{randIndex - 1}/{randIndex}, {randIndex - 1}/{randIndex}/{randIndex + 2}/{randIndex + 3}");
             }
         }
 
-        private void Streets(int randIndex)
-        {
-            if (randIndex % 3 == 0)
-            {
-                Console.WriteLine($"Street Winners: {randIndex - 2},{randIndex - 1},{randIndex}");
-            }
-            else if (randIndex % 3 == 1)
-            {
-                Console.WriteLine($"Street Winners: {randIndex},{randIndex + 1},{randIndex + 2}");
-            }
-            else
-            {
-                Console.WriteLine($"Street Winners: {randIndex - 1},{randIndex},{randIndex + 1}");
-            }
-        }
-
-        private void Columns(int randIndex)
+        private void ColumnStreets(int randIndex)
         {
             if (randIndex % 3 == 0)
             {
                 Console.WriteLine("Third Column: Winner!");
+                Console.WriteLine($"Street Winners: {randIndex - 2},{randIndex - 1},{randIndex}");
             }
             else if (randIndex % 3 == 1)
             {
                 Console.WriteLine("First Column: Winner!");
+                Console.WriteLine($"Street Winners: {randIndex},{randIndex + 1},{randIndex + 2}");
             }
             else
             {
                 Console.WriteLine("Second Column: Winner!");
+                Console.WriteLine($"Street Winners: {randIndex - 1},{randIndex},{randIndex + 1}");
             }
         }
 
